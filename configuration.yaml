@@ -1,0 +1,182 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 51.945853
+  longitude: 6.013258
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Amsterdam
+  # Customization file
+  customize: !include customize.yaml
+
+# YAML MODE
+
+lovelace:
+  mode: yaml
+  
+zone: !include zones.yaml
+
+#python_script:
+  
+#PURGE
+recorder:
+  include:
+    domains:
+      - sensor
+  exclude:
+    entities:
+     - sensor.sun
+  
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Allow diagnosing system problems
+system_health:
+
+# Sensors
+sensor: !include sensor.yaml
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+#onderdelen
+
+#stofzuiger
+
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.178.5
+    token: !secret tokenfrits
+    name: frits
+    
+#telefoon tracker
+
+device_tracker:
+  - platform: life360
+    username: !secret mail
+    password: !secret life360 
+    interval_seconds: 10
+    filename: life360.conf
+    show_as_state: places, driving, moving
+    max_update_wait:
+      minutes: 30
+      
+#harmony
+
+#remote:
+   #- platform: harmony
+ #    name: HarmonyHub
+   #  host: 192.168.178.4
+    
+#notify
+notify:
+  - platform: html5
+    name: notify
+    gcm_api_key: !secret notify
+    gcm_sender_id: 401146756524
+    
+#alarm
+
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: !secret alarmcode 
+    pending_time: 15
+    delay_time: 10
+    trigger_time: 10
+    disarmed:
+      trigger_time: 1
+    armed_home:
+      pending_time: 1
+      delay_time: 1
+    disarm_after_trigger: false
+
+#spotify
+    
+media_player:
+  - platform: spotify
+    client_id: 041acc01d6124a6697545597c630fb92
+    client_secret: !secret spotify
+    aliases:
+      1365a7fcce5ac435af2a081daf19df692bc52f58: 'Computer'
+      463fa1a9c50dbd6c3f8bb932e754b330: 'Slaapkamer mini'
+      7960c403ea2be7f74bf3cd7a0428e3854abeb7e3: 'Nokia 7p'
+      a7a56259-a92e-419f-9396-1d0d9603aace': 'audio beneden'
+      
+#weer
+
+weather:
+  - platform: buienradar
+    name: 'Arnhem'
+    # Force 'Meetstation Volkel' to be used:52.07,5.88
+    latitude: 52.07
+    longitude: 5.88
+    forecast: True
+
+#light
+
+light: !include light.yaml
+
+#duckdns
+
+duckdns:
+  domain: spotvogel
+  access_token: !secret duckdns
+  
+#
+http:
+  ssl_certificate: /etc/letsencrypt/live/spotvogel.duckdns.org/fullchain.pem
+  ssl_key: /etc/letsencrypt/live/spotvogel.duckdns.org/privkey.pem
+  base_url: https://spotvogel.duckdns.org
+
+#Google
+
+google_assistant:
+  project_id: home-63dd6
+  api_key: AIzaSyA_6hJ-CyR2wzsQ_gzvyV0ANzTTdw0MVKE
+  exposed_domains:
+    - switch
+    - light
+    - group
+    - script
+    - climate 

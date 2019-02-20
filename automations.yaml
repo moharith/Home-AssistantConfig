@@ -1,0 +1,215 @@
+
+- alias: Sleep Mode
+  trigger:
+    - platform: template
+      value_template: "{{ state_attr('device_tracker.jordi_de_geus', 'battery_charging') == True }}"
+  condition:
+     - condition: template
+       value_template: '{{ now().hour >= 22 and now().hour <=6 }}'
+  action:
+  - service: notify.notify
+    data:
+      message: 'Test: Slaapmodus ingeschakeld'
+  - service: light.turn_off
+    entity_id: group.allelampen    
+  - service: light.turn_on
+    entity_id: light.stroom_tv         
+      
+
+- alias: Hue remote automation 
+  trigger: 
+  - entity_id: sensor.slaap_schakelaar_updated 
+    platform: state 
+  - entity_id: sensor.slaap_schakelaar_button 
+    platform: state 
+  action: 
+  - service: python_script.hue_remote 
+ 
+#woonkamer
+- alias: 'Woonkamer aan'
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      to: 'home'
+  action:
+    - service: light.turn_on
+      entity_id: light.woonkamer
+    - service: notify.notify
+      data:
+        message: 'Lampen woonkamer aan' 
+  
+# Jordi Thuis
+
+- alias: 'Jordi komt thuis'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.jordi_de_geus
+      to: 'home'
+  action:
+    - service: notify.notify
+      data:
+        message: 'Jordi is thuis'
+        
+# Iris Thuis
+
+- alias: 'Iris komt thuis'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.iris_braun
+      to: 'home'
+  action:
+    - service: notify.notify
+      data:
+        message: 'Iris is thuis'     
+  
+#iedereen weg
+- alias: 'Iedereen weg'
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    to: 'not_home'
+  action:
+    service: light.turn_off
+    entity_id: group.allelampen
+
+
+################################
+### manual alarm panel
+################################
+
+- alias: Movement
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: sensor.gang_motion_sensor
+      to: 'on'
+  action:
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.ha_alarm
+
+- alias: Alarm Away
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: sensor.gang_motion_sensor
+      to: 'on'
+  condition:
+    condition: state
+    entity_id: alarm_control_panel.home_alarm
+    state: armed_away
+  action: 
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.home_alarm
+    - service: notify.notify
+      data:
+        message: 'Alarm triggered' 
+
+- alias: Alarm Home
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: sensor.gang_motion_sensor
+      to: 'on'
+  condition:
+    condition: state
+    entity_id: alarm_control_panel.home_alarm
+    state: armed_home
+  action:
+    service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.home_alarm
+
+- alias: Triggered Flash
+  hide_entity: False
+  trigger:
+    platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: 'triggered'
+  action:
+    - service: script.turn_on
+      entity_id: script.light_flash
+    - service: notify.notify
+      data:
+#        message: 'Home Alarm Triggered {{now.now().strftime("%Y%m%d-%H%M%S")}}'
+        message: 'Home Alarm Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.audio_alles
+        volume_level: 1            
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.audio_alles
+        media_content_id: https://onlineclock.net/audio/options/police-car.mp3
+        media_content_type: audio/mp3  
+
+- alias: Disarmed Off
+  hide_entity: False
+  trigger:
+    platform: state
+    entity_id: alarm_control_panel.home_alarm
+    to: 'disarmed'
+  action:
+    - service: script.turn_off
+      entity_id: script.light_loop
+    - service: script.turn_off
+      entity_id: script.light_flash
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.audio_alles
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.audio_alles
+        volume_level: 0.3        
+    - service: notify.notify
+      data:
+#        message: 'Home Alarm Reset {{now.now().strftime("%Y%m%d-%H%M%S")}}'
+        message: 'Alarmmelding gereset {{now().strftime("%Y%m%d-%H%M%S")}}'
+        
+- alias: 'dim_slaap_aan'
+  trigger:
+    - platform: state
+      entity_id: sensor.slaap_schakelaar
+      to: '1_click_up'
+  condition: 
+  action:   
+    - service: light.turn_on   
+      entity_id: light.slaapkamer
+
+- alias: 'dim_slaap_aan_1'
+  trigger:
+    - platform: state
+      entity_id: sensor.slaap_schakelaar
+      to: '1_click'
+  condition: 
+  action:   
+    - service: light.turn_on   
+      entity_id: light.slaapkamer      
+
+- alias: 'dim_slaap_uit'
+  trigger:
+    - platform: state
+      entity_id: sensor.slaap_schakelaar
+      to: '1_hold'
+  condition: 
+  action:   
+    - service: light.turn_off   
+      entity_id: light.slaapkamer
+       
+- alias: 'dim_Zolder'
+  trigger:
+    - platform: state
+      entity_id: sensor.slaap_schakelaar
+      to: '2_hold'
+  condition: 
+  action:   
+    - service: light.turn_off   
+      entity_id: light.zoldergroep   
+
+- alias: 'dim_slaap_uit_alles'
+  trigger:
+    - platform: state
+      entity_id: sensor.slaap_schakelaar
+      to: '4_hold'
+  condition: 
+  action:   
+    - service: light.turn_off   
+      entity_id: group.bovengroep   

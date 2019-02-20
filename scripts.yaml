@@ -1,0 +1,127 @@
+#### scripts
+  light_flash:
+    alias: Light flash on
+    sequence:
+      - service: homeassistant.turn_on
+        data:
+          entity_id: light.woonkamergroep
+          brightness: 255
+          rgb_color: [255,0,0]            
+      - delay:
+          seconds: 1
+      - service: homeassistant.turn_off
+        data:
+          entity_id: light.woonkamergroep
+      - service: script.turn_on
+        data:
+          entity_id: script.light_loop
+  light_loop:
+    alias: Light flash loop
+    sequence:
+      - delay:
+          # time for flash light off
+          seconds: 1
+      - service: script.turn_on
+        data:
+          entity_id: script.light_flash
+          
+  worteltaart:
+    alias: "worteltaart"
+    sequence:
+      # This is Home Assistant Script Syntax
+      - service: light.turn_on
+        data:
+          entity_id: light.bovengroep
+          transition: 20
+          brightness: 255
+          rgb_color: [255, 255, 255]        
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.mini_slaap
+          volume_level: 0.3
+      - delay: '00:00:05'
+      - service: media_player.play_media
+        data:
+          entity_id: media_player.mini_slaap
+          media_content_id: https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO538.mp3?dist=tunein
+          media_content_type: audio/mp3          
+      - service: light.turn_on
+        data:
+          entity_id: light.woonkamergroep
+          brightness: 255
+          
+          
+  deactiveer_boven:
+    alias: "deactiveer boven"
+    sequence:
+      # This is Home Assistant Script Syntax
+      - service: light.turn_off   
+        data:
+          entity_id: light.bovengroep               
+       
+  slaapje:
+    alias: "slaapje"
+    sequence:
+      # This is Home Assistant Script Syntax
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.mini_slaap
+          volume_level: 0.1      
+      - service: light.turn_off
+        data:
+          entity_id: light.allelampen  
+      - delay: '00:00:01'   
+      - service: light.turn_on
+        data:
+          entity_id: light.stroom_slaapkamer
+      - service: light.turn_on
+        data:
+          entity_id: light.slaapkamer
+          brightness: 30
+          rgb_color: [202, 0, 0]
+          
+  tv:
+    alias: "kijk tv" 
+    sequence:
+      - service: remote.turn_on
+        entity_id: remote.harmonyhub
+        data:
+          activity: "Smart TV" 
+            #kijk tv 
+
+  radio:
+    alias: "luister radio" 
+    sequence:
+      - service: remote.turn_on
+        entity_id: remote.harmonyhub
+        data:
+          activity: "radio" 
+            #kijk tv 
+            
+  luister_muziek:
+    alias: "luister muziek" 
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.harmonyhub
+          command:
+            - SceneRadio
+          device: 58068245
+          delay_secs: 0.6       
+    
+  tv_uit:
+    alias: "tv uit"
+    sequence:
+      - service: remote.turn_on
+        entity_id: remote.harmonyhub
+        data:
+          activity: "PowerOff"
+
+  volume_reciever:
+    alias: "volume omhoog"
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.harmonyhub
+        data:
+          command: "VolumeUp"
+          device: 58068245

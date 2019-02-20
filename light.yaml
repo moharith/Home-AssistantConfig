@@ -1,0 +1,58 @@
+- platform: group
+  name: woonkamergroep
+  entities:
+    - light.bank
+    - light.bloom
+    - light.eettafel
+    - light.glitter
+    - light.stroom_tv
+    - light.hue_go_1
+- platform: group
+  name: bovengroep
+  entities:
+    - light.boven
+    - light.slaapkamer
+    - light.badkamer
+    - light.remi
+    - light.kamer_noell
+    - light.zolder_1
+    - light.zolder_2  
+- platform: group
+  name: zoldergroep
+  entities:   
+    - light.zolder_1
+    - light.zolder_2  
+- platform: group
+  name: voordeurgroep
+  entities:   
+    - light.voordeur_1
+    - light.voordeur_2
+    - light.voordeur_3
+- platform: group
+  name: allelampen
+  entities:
+  #boven
+    - light.boven
+    - light.slaapkamer
+    - light.badkamer
+    - light.remi
+    - light.kamer_noell
+  #beneden
+    - light.bank
+    - light.bloom
+    - light.eettafel
+    - light.glitter        
+    - light.stroom_tv
+    - light.hue_go_1
+  #keuken
+    - light.keuken    
+  #gang      
+    - light.gang    
+    - light.wc_beneden
+  #buiten
+    - light.voordeur_1
+    - light.voordeur_2
+    - light.voordeur_3
+  #zolder
+    - light.zolder_1
+    - light.zolder_2 

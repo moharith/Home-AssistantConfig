@@ -1,0 +1,102 @@
+- platform: hue
+  ip_address: 192.168.178.3
+  token: !secret hue_token
+  
+- platform: pi_hole
+  host: localhost #192.168.178.2:4865
+  ssl: false
+  verify_ssl: false
+  monitored_conditions:
+    - ads_blocked_today
+    - dns_queries_today
+    - ads_percentage_today
+    - unique_clients
+ 
+    
+- platform: template
+  sensors:
+    woonkamertemp:
+     friendly_name: 'Temperatuur woonkamer'
+     value_template: '{{states.sensor.gang_motion_sensor.attributes.temperature}}'  
+     unit_of_measurement: °C       
+     
+- platform: template
+  sensors:
+    boventemp:
+     friendly_name: 'Temperatuur boven'
+     value_template: '{{states.sensor.boven_motion_sensor.attributes.temperature}}'  
+     unit_of_measurement: °C
+               
+     
+- platform: template
+  sensors:
+    buitentemp:
+     friendly_name: 'Temperatuur buiten'
+     value_template: '{{states.weather.arnhem.attributes.temperature}}'  
+     unit_of_measurement: °C
+- platform: template
+  sensors:
+    batiris:
+     friendly_name: 'Batterij Iris'
+     unit_of_measurement: '%'       
+     value_template: "{{ state_attr('device_tracker.iris_braun', 'battery')}}"
+     device_class: battery
+- platform: template
+  sensors:
+    batjordi:
+     friendly_name: 'Batterij Jordi'
+     unit_of_measurement: '%'       
+     value_template: "{{ state_attr('device_tracker.jordi_de_geus', 'battery')}}"
+     device_class: battery   
+     
+- platform: template
+  sensors:
+    vacuum_status:
+      friendly_name: 'Vacuum - Status'
+      value_template: "Status: {{ states.vacuum.frits.attributes.status }}"
+      
+- platform: template
+  sensors:
+    vacuum_battery:
+      friendly_name: 'Vacuum - Battery'
+      value_template: "Battery: {{ states.vacuum.frits.attributes.battery_level }}"
+      device_class: battery
+      unit_of_measurement: '%'
+      
+      
+- platform: waze_travel_time
+  name: jordiwerk
+  origin: device_tracker.jordi_de_geus
+  destination: zone.wegwijzer
+  region: 'EU'
+ 
+- platform: waze_travel_time
+  name: JordiThuis
+  origin: device_tracker.jordi_de_geus
+  destination: zone.home
+  region: 'EU'
+  
+- platform: waze_travel_time
+  name: IrisWerk
+  origin: device_tracker.iris_braun
+  destination: zone.toorank
+  region: 'EU'
+  
+- platform: waze_travel_time
+  name: IrisThuis
+  origin: device_tracker.iris_braun
+  destination: zone.home
+  region: 'EU'  
+  
+- platform: template
+  sensors:
+    werk_route:
+      friendly_name: 'Routewerk'
+      value_template: "route: {{ states.sensor.jordiwerk.attributes.route }}"
+      
+- platform: template
+  sensors:
+    huis_route:
+      friendly_name: 'Routehuis'
+      value_template: "route: {{ states.sensor.jordithuis.attributes.route }}"      
+      

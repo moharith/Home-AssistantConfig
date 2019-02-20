@@ -1,0 +1,783 @@
+resources:
+  - url: /local/monster-card.js?v=1
+    type: js
+  - url: /local/bignumber-card.js?v=1
+    type: js
+  - url: /local/mini-media-player-bundle.js?v=0.9.2
+    type: module
+  - url: /local/jukebox.js
+    type: module    
+    
+title: Ons huis
+views:
+  - title: Algemeen
+    icon: mdi:home-outline
+    panel: false
+    cards:
+# fotokaart
+
+      - type: picture-elements
+        image: /local/wij.jpg
+        elements:        
+        - type: state-label
+          prefix: 'Jordi is @: '
+          entity: device_tracker.jordi_de_geus
+          style:
+            top: 90%
+            left: 5%
+            color: rgb(255, 255, 255)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-right-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8    
+        - type: state-label
+          prefix: 'Iris is @: '
+          entity: device_tracker.iris_braun
+          style:
+            top: 75%
+            left: 5%
+            color: rgb(255, 255, 255)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-right-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8                   
+        - type: state-label
+          prefix: 'Batterij: '
+          entity: sensor.batjordi
+          style:
+            top: 90%
+            right: 5%
+            color: rgb(255, 255, 255)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-right-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8  
+        - type: state-label
+          prefix: 'Batterij: '
+          entity: sensor.batiris
+          style:
+            top: 75%
+            right: 5%
+            color: rgb(255, 255, 255)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-right-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8  
+            
+      - type: weather-forecast
+        entity: weather.arnhem
+             
+      - type: picture-elements
+        image: /local/traffic.jpg
+        elements:
+        - type: state-label
+          entity: sensor.jordithuis
+          prefix: 'Jordi tijd naar huis: '
+          style:
+            top: 40%
+            left: 5%
+            color: rgb(255, 255, 0)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-left-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8
+        - type: state-label
+          prefix: 'Beste route: '
+          entity: sensor.huis_route
+          style:
+            top: 50%
+            left: 5%
+            color: rgb(255, 255, 255)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-left-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8   
+       
+        - type: state-label
+          entity: sensor.jordiwerk
+          prefix: 'Jordi tijd naar werk: '
+          style:
+            top: 10%
+            left: 5%
+            color: rgb(255, 255, 0)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-left-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8   
+        - type: state-label
+          prefix: 'Beste route: '
+          entity: sensor.werk_route
+          style:
+            top: 20%
+            left: 5%
+            color: rgb(255, 255, 255)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-left-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8       
+            
+        - type: state-label
+          entity: sensor.iristhuis
+          prefix: 'Iris tijd naar huis: '
+          style:
+            top: 80%
+            left: 5%
+            color: rgb(255, 255, 0)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-right-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8   
+        - type: state-label
+          entity: sensor.iriswerk
+          prefix: 'Iris tijd naar werk: '
+          style:
+            top: 90%
+            left: 5%
+            color: rgb(255, 255, 0)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-right-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8             
+            
+           
+      - type: picture-elements
+        image: /local/vacuum_card.jpg
+        elements:
+        - type: icon
+          icon: mdi:bell-ring
+          tap_action: 
+            action: call-service
+            entity: vacuum.frits
+            service: vacuum.locate
+          style:
+            top: 80%
+            left: 80%
+            "--paper-item-icon-color": rgb(115, 122, 130)               
+        - type: icon
+          icon: mdi:home
+          tap_action: 
+            action: call-service
+            entity: vacuum.frits
+            service: vacuum.return_to_base
+          style:
+            top: 80%
+            left: 60%
+            "--paper-item-icon-color": rgb(115, 122, 130)
+        - type: icon
+          icon: mdi:play-pause
+          tap_action: 
+            action: call-service
+            entity: vacuum.frits
+            service: vacuum.start
+          style:
+            top: 80%
+            left: 40%
+            "--paper-item-icon-color": rgb(115, 122, 130)
+        - type: icon
+          icon: mdi:stop
+          tap_action: 
+            action: call-service
+            entity: vacuum.frits
+            service: vacuum.stop
+          style:
+            top: 80%
+            left: 20%
+            "--paper-item-icon-color": rgb(115, 122, 130)   
+        - type: state-label
+          entity: sensor.vacuum_status
+          style:
+            top: 10%
+            left: 5%
+            color: rgb(255, 255, 255)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-left-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8   
+        - type: state-label
+          entity: sensor.vacuum_battery
+          style:
+            top: 10%
+            right: 5%
+            color: rgb(255, 255, 255)
+            transform: translate(0%,-50%)
+            pointer-events: none
+            text-shadow: 1px 1px black
+            font-family: Trebuchet MS
+            font-size: 90%
+            font-weight: bold
+            border-right-style: solid
+            border-color: rgb(34, 154, 210)
+            background-color: rgb(54, 65, 78)
+            opacity: 0.8            
+
+  - title: Alarm
+    icon: mdi:alarm-light
+    panel: false
+    cards:
+      - type: alarm-panel
+        title: Het alarm
+        entity: alarm_control_panel.home_alarm
+                     
+      - type: custom:bignumber-card
+        title: Advertenties geblokkeerd vandaag
+        entity: sensor.pi_hole_ads_blocked_today
+        scale: 20px
+        from: left
+        min: -5
+        max: 35
+        severity:
+          - value: 10
+            style: 'var(--label-badge-blue)'
+          - value: 23
+            style: 'var(--label-badge-green)'
+          - value: 30
+            style: 'var(--label-badge-red)'  
+            
+      - type: custom:bignumber-card
+        title: Advertenties geblokkeerd vandaag
+        entity: sensor.pi_hole_ads_percentage_blocked_today
+        scale: 20px
+        from: left
+        min: -5
+        max: 35
+        severity:
+          - value: 10
+            style: 'var(--label-badge-blue)'
+          - value: 23
+            style: 'var(--label-badge-green)'
+          - value: 30
+            style: 'var(--label-badge-red)'             
+        
+               
+  - title: Temperatuur
+    icon: mdi:temperature-celsius
+    cards:
+    
+      - type: horizontal-stack
+        cards:        
+          - type: custom:bignumber-card
+            title: Woonkamer
+            entity: sensor.woonkamertemp
+            scale: 20px
+            from: left
+            min: -5
+            max: 35
+            severity:
+              - value: 10
+                style: 'var(--label-badge-blue)'
+              - value: 23
+                style: 'var(--label-badge-green)'
+              - value: 30
+                style: 'var(--label-badge-red)'            
+          - type: custom:bignumber-card
+            title: Boven
+            entity: sensor.boventemp
+            scale: 20px
+            from: left
+            min: -5
+            max: 35
+            severity:
+              - value: 10
+                style: 'var(--label-badge-blue)'
+              - value: 23
+                style: 'var(--label-badge-green)'
+              - value: 30
+                style: 'var(--label-badge-red)'  
+          - type: custom:bignumber-card
+            title: Buiten
+            entity: sensor.buitentemp
+            scale: 20px 
+            from: left
+            min: -5
+            max: 35
+            severity:
+              - value: 10
+                style: 'var(--label-badge-blue)'
+              - value: 23
+                style: 'var(--label-badge-green)'
+              - value: 30
+                style: 'var(--label-badge-red)'  
+
+      - type: history-graph
+        title: temperatuur afgelopen 24 uur
+        entities:
+          - sensor.woonkamertemp
+          - sensor.boventemp 
+          - sensor.buitentemp
+      - type: history-graph
+        title: temperatuur afgelopen 3 dagen
+        hours_to_show: 100        
+        entities:
+          - sensor.woonkamertemp
+          - sensor.boventemp 
+          - sensor.buitentemp
+
+######################################
+#               LAMPEN               #
+######################################
+
+  - title: lampen
+    icon: mdi:lightbulb
+    cards:
+              
+      - type: entities
+        title: Woonkamer
+        show_header_toggle: true
+        entities:
+          - light.woonkamergroep  #testing if the group will show.
+          - light.glitter  #these all show..
+          - light.eettafel
+          - light.bloom
+          - light.bank
+          - light.hue_go_1
+      - type: entities
+        title: Beneden
+        show_header_toggle: true
+        entities:
+          - light.gang
+          - light.wc_beneden 
+          - light.keuken                  
+      - type: entities
+        title: Boven
+        show_header_toggle: true
+        entities:
+          - light.bovengroep
+          - light.boven 
+          - light.badkamer
+      - type: entities
+        title: Slaapkamers
+        show_header_toggle: true
+        entities:
+          - light.slaapkamer
+          - light.kamer_noell  
+          - light.remi
+      - type: horizontal-stack
+        cards:
+        - type: light
+          name: voordeur
+          entity: light.voordeurgroep
+        - type: light
+          name: zolder
+          entity: light.zoldergroep
+      - type: entities
+        title: stroom
+        entities:
+          - entity: light.stroom_slaapkamer  
+            icon: mdi:power
+          - entity: light.stroom_tv
+            icon: mdi:power                  
+      - type: entity-filter
+        title: Lights
+        show_name: true
+        show_state: false
+        columns: 5
+        entities:
+          - entity: light.slaapkamer
+            name: Slaap
+            icon: mdi:desk-lamp
+            tap_action: toggle
+            hold_action: toggle         
+          - entity: light.wc_beneden
+            tap_action: toggle
+          - entity: light.remi
+            tap_action: toggle
+          - entity: light.keuken
+            tap_action: toggle          
+          - entity: light.kamer_noell
+            tap_action: toggle
+          - entity: light.glitter
+            tap_action: toggle
+          - entity: light.gang
+            tap_action: toggle
+          - entity: light.eettafel
+            tap_action: toggle
+          - entity: light.boven
+            tap_action: toggle
+          - entity: light.bloom
+            tap_action: toggle
+          - entity: light.bank
+            tap_action: toggle
+          - entity: light.badkamer
+            tap_action: toggle
+          - entity: light.voordeurgroep
+            tap_action: toggle
+          - entity: light.zoldergroep
+            tap_action: toggle            
+            
+            
+        state_filter:
+          - "on"
+
+           
+######################################################
+#                                                    #          
+#                                                    #          
+#             MUSIC                                  #
+#                                                    #
+#                                                    #
+######################################################                  
+      
+  - title: Media
+    icon: mdi:music
+    cards:   
+      - type: "custom:jukebox-card"
+        name: jo
+        links:
+          - url: http://playerservices.streamtheworld.com/api/livestream-redirect/RADIO538.mp3 
+            name: Radio 538  
+          - url: http://icecast-qmusic.cdp.triple-it.nl/Qmusic_nl_live_96.mp3
+            name: Q Music            
+          - url: http://icecast.omroep.nl/radio2-bb-mp3
+            name: Radio2   
+          - url: http://playerservices.streamtheworld.com/api/livestream-redirect/SKYRADIO.mp3
+            name: Skyradio
+          - url: http://streams.greenhost.nl:8080/jazz
+            name: Concertzender Jazz
+          - url: http://fs-insidejazz.fast-serv.com:8282/;stream.nsv
+            name: Inside Jazz
+          - url: http://stream.srg-ssr.ch/m/rsj/mp3_128
+            name: Radio Swiss Jazz
+          - url: http://stream.beachlatinoradio.com:8030/;?d=
+            name: Beach Latino Radio
+          - url: http://streams.calmradio.com/api/43/128/stream/;?d=
+            name: Calm Radio
+          - url: http://swr-swr1-bw.cast.addradio.de/swr/swr1/bw/mp3/128/stream.mp3
+            name: SWR 1            
+        entities:
+          - media_player.audio_beneden        
+          - media_player.chromecast
+          - media_player.keuken_mini
+          - media_player.radio    
+          - media_player.slaapkamer_mini
+          - media_player.woonkamer_mini
+          - media_player.audio_alles          
+
+      # - type: custom:mini-media-player
+        # entity: media_player.audio_beneden
+        # name: Audio beneden
+        # artwork: cover
+        # power_color: true
+        # hide_volume: false
+        # show_progress: true
+      # - type: custom:mini-media-player
+        # entity: media_player.muziek
+        # name: Reciever
+        # artwork: cover
+        # power_color: true
+        # hide_volume: true
+        # show_progress: true        
+      # - type: custom:mini-media-player
+        # entity: media_player.mini_slaap
+        # name: Keuken
+        # artwork: cover
+        # power_color: true
+        # hide_volume: true
+        # show_progress: true
+      # - type: custom:mini-media-player
+        # entity: media_player.mini_woon
+        # name: Mini woon
+        # artwork: cover
+        # power_color: true
+        # hide_volume: true
+        # show_progress: true
+      # - type: custom:mini-media-player
+        # entity:  media_player.googlehome0130
+        # name: Slaapkamer
+        # artwork: cover
+        # power_color: true
+        # hide_volume: false
+        # show_progress: true        
+
+      - type: custom:mini-media-player
+        entity: media_player.spotify
+        icon: mdi:router-wireless
+        artwork_border: true
+        show_source: true
+        media_buttons:
+        - name: Soft pop Hits
+          type: playlist
+          url: 'spotify:user:spotify:playlist:37i9dQZF1DWTwnEm1IYyoj'
+        - name: Top 40 NL
+          type: playlist
+          url: 'spotify:user:spotifycharts:playlist:37i9dQZEVXbKCF6dqVpDkS'
+        - name: Jazzy Romance
+          type: playlist
+          url: 'spotify:user:spotify:playlist:37i9dQZF1DWTbzY5gOVvKd' 
+            
+
+######################################################
+#                                                    #          
+#                                                    #          
+#             HARMONY COMPANION                      #
+#                                                    #
+#                                                    #
+######################################################     
+
+     
+  - title: harmony
+    icon: mdi:television
+    panel: false
+    cards:
+      - type: horizontal-stack
+        cards: 
+        - type: entity-button
+          name: kijktv
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.turn_on
+            service_data:
+              entity_id: remote.harmonyhub
+              activity: "Smart TV"
+        - type: entity-button
+          name: Tv uit
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.turn_on
+            service_data:
+              entity_id: remote.harmonyhub
+              activity: "PowerOff"  
+      - type: horizontal-stack
+        cards:         
+        - type: entity-button
+          name: Vol-
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "VolumeDown" 
+              device: 58068245
+              num_repeats: 5
+              delay_secs: 0.25              
+ 
+              
+        - type: entity-button
+          name: up
+          icon: mdi:arrow-up-thick            
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "DirectionUp" 
+              device: 59107148
+        - type: entity-button
+          name: Vol+
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "VolumeUp" 
+              device: 58068245
+              num_repeats: 5
+              delay_secs: 0.25
+              
+      - type: horizontal-stack
+        cards:    
+        - type: entity-button
+          name: left
+          icon: mdi:arrow-left-thick            
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "DirectionLeft" 
+              device: 59107148
+        - type: entity-button
+          name: OK
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "OK" 
+              device: 59107148
+        - type: entity-button
+          name: right
+          icon: mdi:arrow-right-thick  
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "DirectionRight" 
+              device: 59107148
+              
+      - type: horizontal-stack
+        cards:   
+        - type: entity-button
+          name: back
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "Back" 
+              device: 59107148        
+        - type: entity-button
+          name: down
+          icon: mdi:arrow-down-thick             
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "DirectionDown" 
+              device: 59107148
+        - type: entity-button
+          name: home
+          icon: mdi:home
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "Home" 
+              device: 59107148            
+      - type: horizontal-stack
+        cards:               
+        - type: entity-button
+          name: TV 5.1
+          icon: mdi:television          
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "SceneBd/Dvd" 
+              device: 58068245          
+        - type: entity-button
+          name: TV DPL
+          icon: mdi:television
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "SceneTv" 
+              device: 58068245                          
+        - type: entity-button
+          name: TV Ziggo
+          icon: mdi:television-box      
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "SceneCD" 
+              device: 58068245                     
+        - type: entity-button
+          name: Reciever
+          icon: mdi:music
+          entity: remote.harmonyhub
+          tap_action:
+            action: call-service
+            service: remote.send_command
+            service_data:
+              entity_id: remote.harmonyhub
+              command: "SceneRadio" 
+              device: 58068245          
+         
+######################################################
+#                                                    #          
+#                                                    #          
+#             MAP                                    #
+#                                                    #
+#                                                    #
+######################################################             
+ 
+  - title: Map
+    icon: mdi:map
+    panel: true
+    cards:
+      - type: map
+        entities:
+          - zone.home
+          - device_tracker.telefoon_telefoon      
+          - device_tracker.iris_braun    
+          
+
+ 
+        
