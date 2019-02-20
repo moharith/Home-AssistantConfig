@@ -173,7 +173,7 @@ http:
 
 google_assistant:
   project_id: home-63dd6
-  api_key: AIzaSyA_6hJ-CyR2wzsQ_gzvyV0ANzTTdw0MVKE
+  api_key: !secret google_assistant
   exposed_domains:
     - switch
     - light
