@@ -6,13 +6,14 @@
 !*.yaml
 !.gitignore
 !*.md
-!custom_components
+
 
 # Ignore folders.
 .storage
 .cloud
 .google.token
 www
+custom_components
 
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
