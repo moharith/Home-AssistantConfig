@@ -758,6 +758,16 @@ views:
               entity_id: remote.harmonyhub
               command: "SceneRadio" 
               device: 58068245          
+
+#COMPUTER
+
+  - title: Computer
+    icon: mdi:computer
+    panel: false
+    cards:
+      - type: type: sensor
+        entity: sensor.disk_use_percent_home
+        name: HDD ruimte
          
 ######################################################
 #                                                    #          
