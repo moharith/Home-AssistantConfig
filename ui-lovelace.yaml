@@ -7,6 +7,8 @@ resources:
     type: module
   - url: /local/jukebox.js
     type: module    
+  - url: /local/mini-graph-card-bundle.js?v=0.3.0
+    type: module
     
 title: Ons huis
 views:
