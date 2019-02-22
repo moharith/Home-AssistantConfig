@@ -8,7 +8,7 @@
 !*.md
 !*.home-assistant.log
 !*.js
-*.sh
+!*.sh
 
 # Ignore folders.
 .storage
