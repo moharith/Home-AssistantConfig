@@ -322,7 +322,13 @@ views:
     cards:
     
       - type: horizontal-stack
-        cards:        
+        cards:       
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.woonkamertemp
+            name: Living Room
+            line_color: '#3498db'
+            line_width: 3        
           - type: custom:bignumber-card
             title: Woonkamer
             entity: sensor.woonkamertemp
