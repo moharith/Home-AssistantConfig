@@ -9,6 +9,7 @@
 !*.home-assistant.log
 !*.js
 !*.sh
+!*.py
 !custom_components/
 !custom_components/*
 !custom_components*
