@@ -326,7 +326,7 @@ views:
           - type: custom:mini-graph-card
             entities:
               - sensor.woonkamertemp
-            name: Living Room
+            name: Woonkamer
             line_color: '#3498db'
             line_width: 3        
           - type: custom:bignumber-card
