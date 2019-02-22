@@ -7,18 +7,15 @@ homeassistant:
   time_zone: Europe/Amsterdam
 
 #includes
-frontend:
-  themes: !include themes.yaml
-  
+zone: !include zones.yaml  
+sensor: !include sensor.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
 
 # YAML MODE
-
 lovelace:
   mode: yaml
-  
-zone: !include zones.yaml
-
-#python_script:
   
 #PURGE
 recorder:
@@ -34,7 +31,7 @@ introduction:
 
 # Enables the frontend
 frontend:
-
+  themes: !include themes.yaml
 # Enables configuration UI
 config:
 
@@ -63,9 +60,6 @@ sun:
 # Allow diagnosing system problems
 system_health:
 
-# Sensors
-sensor: !include sensor.yaml
-
 # Text to speech
 tts:
   - platform: google
@@ -73,11 +67,7 @@ tts:
 # Cloud
 cloud:
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
 
-#onderdelen
 
 #stofzuiger
 
