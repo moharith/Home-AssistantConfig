@@ -765,7 +765,7 @@ views:
     icon: mdi:computer
     panel: false
     cards:
-      - type: type: sensor
+      - type: sensor
         entity: sensor.disk_use_percent_home
         name: HDD ruimte
          
