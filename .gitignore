@@ -9,7 +9,7 @@
 !*.home-assistant.log
 !*.js
 !*.sh
-!custom_components/
+!custom_components/*
 
 # Ignore folders.
 .storage
