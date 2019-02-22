@@ -14,6 +14,7 @@
 !custom_components/*
 !custom_components*
 !custom_components
+!www/
 
 # Ignore folders.
 .storage
