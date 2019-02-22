@@ -7,14 +7,13 @@
 !.gitignore
 !*.md
 !*.home-assistant.log
+!*.js
+*.sh
 
 # Ignore folders.
 .storage
 .cloud
 .google.token
-www
-.custom_components
-
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
