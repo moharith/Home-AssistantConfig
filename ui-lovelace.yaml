@@ -485,6 +485,7 @@ views:
       
   - title: Media
     icon: mdi:music
+    panel: false
     cards:   
       - type: "custom:jukebox-card"
         name: jo
