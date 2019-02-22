@@ -762,13 +762,26 @@ views:
 #COMPUTER
 
   - title: Computer
-    icon: mdi:computer
+    icon: mdi:desktop-classic
     panel: false
     cards:
       - type: sensor
         entity: sensor.disk_use_percent_home
         name: HDD ruimte
-         
+      - type: sensor
+        entity: sensor.memory_free
+        name: Geheugen vrij
+      - type: sensor
+        entity: sensor.speedtest_download
+        name: Download
+      - type: sensor
+        entity: sensor.speedtest_ping
+        name: Ping    
+      - type: sensor
+        entity: sensor.speedtest_upload
+        name: Upload
+
+     
 ######################################################
 #                                                    #          
 #                                                    #          
