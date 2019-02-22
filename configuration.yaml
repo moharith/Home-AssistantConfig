@@ -91,15 +91,15 @@ vacuum:
     
 #telefoon tracker
 
-device_tracker:
-  - platform: life360
-    username: !secret mail
-    password: !secret life360 
-    interval_seconds: 10
-    filename: life360.conf
-    show_as_state: places, driving, moving
-    max_update_wait:
-      minutes: 30
+# device_tracker:
+  # - platform: life360
+    # username: !secret mail
+    # password: !secret life360 
+    # interval_seconds: 10
+    # filename: life360.conf
+    # show_as_state: places, driving, moving
+    # max_update_wait:
+      # minutes: 30
       
 #harmony
 remote:
