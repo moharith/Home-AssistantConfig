@@ -1,3 +1,5 @@
+#MAIN#
+
 homeassistant:
   name: Home
   latitude: 51.945853
@@ -6,12 +8,18 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Amsterdam
 
+
+# Enables the frontend
+frontend:
+  themes: !include themes.yaml
+
 #includes
 zone: !include zones.yaml  
 sensor: !include sensor.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+light: !include light.yaml
 
 # YAML MODE
 lovelace:
@@ -29,9 +37,6 @@ recorder:
 # Show links to resources in log and frontend
 introduction:
 
-# Enables the frontend
-frontend:
-  themes: !include themes.yaml
 # Enables configuration UI
 config:
 
@@ -142,7 +147,6 @@ weather:
 
 #light
 
-light: !include light.yaml
 
 #duckdns
 
