@@ -485,10 +485,8 @@ views:
       
   - title: Media
     icon: mdi:music
-    panel: false
     cards:   
       - type: "custom:jukebox-card"
-        name: jo
         links:
           - url: http://playerservices.streamtheworld.com/api/livestream-redirect/RADIO538.mp3 
             name: Radio 538  
